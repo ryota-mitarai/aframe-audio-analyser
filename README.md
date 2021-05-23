@@ -10,10 +10,14 @@ Check out the [live demo](https://codesandbox.io/s/aframe-audio-analyser-example
 
 ![Example gif](https://github.com/ryota-mitarai/aframe-audio-analyser/blob/master/examples/levels/preview.gif)
 
+These components mostly provide processed Web Audio data (beat detection, levels, volume, waveform). How that is visualized is up to you (by writing components that use this data to have a visual effect). Components will generally implement the tick handler and read the analyser data. See the examples for some example visualization components.
+
 ## Properties
 
 | Property              | Description                                                          | Default Value |
 | --------------------- | -------------------------------------------------------------------- | ------------- |
+| src                   | Selector to an audio element or path to audio file.                  | ''            |
+|                       |                                                                      |               |
 | beatStartCutoff       | Parameter for beat detection                                         | 0.8           |
 | beatEndCutoff         | Parameter for beat detection                                         | 0.75          |
 | cache                 | Whether or not to cache audio buffers.                               | false         |
@@ -23,7 +27,6 @@ Check out the [live demo](https://codesandbox.io/s/aframe-audio-analyser-example
 | enableWaveform        | Whether or not to store waveform data. Disable if not using.         | true          |
 | fftSize               | Frequency domain.                                                    | 2048          |
 | smoothingTimeConstant | How smooth the frequency data is returned.                           | 0.8           |
-| src                   | Selector to an audio element or path to audio file.                  | ''            |
 | unique                | Whether to share the audio instance with other visualizing entities. | false         |
 
 ### Members
