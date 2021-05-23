@@ -6,6 +6,7 @@
 
     <script src="../components/color-on-beat.js"></script>
     <script src="../components/ring-on-beat.js"></script>
+    <script src="../components/toggle-on-beat.js"></script>
   </head>
   <body>
     <a-scene>
@@ -19,15 +20,40 @@
       <!--Audio Analyser-->
       <a-entity id="analyser" audioanalyser="src:#song;"></a-entity>
 
-      <a-box position="-2 0.5 -4" ring-on-beat="analyserEl:#analyser; beat:low;" color-on-beat="analyserEl:#analyser; beat:low;">
+      <a-box
+        position="-2 0.5 -4"
+        ring-on-beat="analyserEl:#analyser; beat:low;"
+        color-on-beat="analyserEl:#analyser; beat:low;"
+      >
         <a-text position="0 .75 0" align="center" value="Low Beat"></a-text>
+        <a-light
+          type="spot"
+          color="#faa"
+          position="0 1 0"
+          rotation="-90 0 0"
+          toggle-on-beat="analyserEl:#analyser; beat:low;"
+        ></a-light>
       </a-box>
+
       <a-box position="0 0.5 -4" color-on-beat="analyserEl:#analyser; beat:mid;">
         <a-text position="0 .75 0" align="center" value="Mid Beat"></a-text>
+        <a-light
+          type="spot"
+          color="#afa"
+          position="0 1 0"
+          rotation="-90 0 0"
+          toggle-on-beat="analyserEl:#analyser; beat:mid;"
+        ></a-light>
       </a-box>
       <a-box position="2 0.5 -4" color-on-beat="analyserEl:#analyser; beat:high;">
         <a-text position="0 .75 0" align="center" value="High Beat"></a-text>
-      </a-box>
+        <a-light
+          type="spot"
+          color="#aaf"
+          position="0 1 0"
+          rotation="-90 0 0"
+          toggle-on-beat="analyserEl:#analyser; beat:high;"
+        ></a-light>
       </a-box>
 
       <!--Environment-->
