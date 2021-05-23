@@ -3,12 +3,12 @@
  */
 AFRAME.registerComponent('audioanalyser-levels-scale', {
   schema: {
-    analyserEl: {type: 'selector'},
-    max: {default: 20},
-    multiplier: {default: 100}
+    analyserEl: { type: 'selector' },
+    max: { default: 20 },
+    multiplier: { default: 100 },
   },
 
-  tick: function (time) {
+  tick: function () {
     var analyserEl;
     var children;
     var data = this.data;
@@ -16,15 +16,17 @@ AFRAME.registerComponent('audioanalyser-levels-scale', {
 
     analyserEl = data.analyserEl || this.el;
     levels = analyserEl.components.audioanalyser.levels;
-    if (!levels) { return; }
+    if (!levels) {
+      return;
+    }
 
     children = this.el.children;
     for (var i = 0; i < children.length; i++) {
       children[i].setAttribute('scale', {
         x: 1,
         y: Math.min(data.max, Math.max(levels[i] * data.multiplier, 0.05)),
-        z: 1
+        z: 1,
       });
     }
-  }
+  },
 });
