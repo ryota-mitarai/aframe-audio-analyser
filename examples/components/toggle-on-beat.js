@@ -1,7 +1,7 @@
 AFRAME.registerComponent('toggle-on-beat', {
   schema: {
     analyserEl: { type: 'selector' },
-    beat: { default: 'bass' },
+    beat: { default: 'low' },
     component: { default: '' },
     property: { default: 'visible' },
     value1: { default: true },
