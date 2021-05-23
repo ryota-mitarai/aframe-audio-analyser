@@ -10,7 +10,7 @@ Check out the [live demo](https://codesandbox.io/s/aframe-audio-analyser-example
 
 ![Example gif](https://github.com/ryota-mitarai/aframe-audio-analyser/blob/master/examples/levels/preview.gif)
 
-These components mostly provide processed Web Audio data (beat detection, levels, volume, waveform). How that is visualized is up to you (by writing components that use this data to have a visual effect). Components will generally implement the tick handler and read the analyser data. See the examples for some example visualization components.
+This component mostly provides processed Web Audio data (beat detection, levels, volume, waveform). How that is visualized is up to you (by writing components that use this data to have a visual effect). Components will generally implement the tick handler and read the analyser data. See the examples for some example visualization components.
 
 ## Properties
 
