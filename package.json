@@ -2,7 +2,7 @@
   "name": "aframe-audio-analyser",
   "version": "1.0.0",
   "homepage": "https://github.com/ryota-mitarai/aframe-audio-analyser",
-  "description": "An aframe component for adding audio visualizations, using Web Audio.",
+  "description": "An aframe component for adding audio visualizations.",
   "repository": "https://github.com/ryota-mitarai/aframe-audio-analyser.git",
   "author": "ryota-mitarai",
   "license": "MIT",
