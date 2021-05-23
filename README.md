@@ -46,12 +46,12 @@ el.components.audioanalyser.analyser;
 
 ### Events
 
-| Event Name              | Description                                 |
-| ----------------------- | ------------------------------------------- |
-| audioanalyser-beat-low  | Low beat detected with beat detection.      |
-| audioanalyser-beat-mid  | Midrange beat detected with beat detection. |
-| audioanalyser-beat-high | High beat detected with beat detection.     |
-| audioanalyserready      | AnalyserNode initialized.                   |
+| Event Name              | Description               |
+| ----------------------- | ------------------------- |
+| audioanalyser-beat-low  | Low beat detected.        |
+| audioanalyser-beat-mid  | Midrange beat detected.   |
+| audioanalyser-beat-high | High beat detected.       |
+| audioanalyserready      | AnalyserNode initialized. |
 
 ## Usage
 
