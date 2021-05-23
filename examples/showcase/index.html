@@ -12,9 +12,20 @@
     <script src="../components/audioanalyser-waveform.js"></script>
     <script src="../components/ring-on-beat.js"></script>
     <script src="../components/toggle-on-beat.js"></script>
+    <script>
+      function playSong() {
+        document.getElementById('song').play();
+        document.querySelector('button').style.display = 'none';
+      }
+    </script>
   </head>
   <body>
-    <a-scene background-color="pink">
+    <!--Play / Pause Button-->
+    <button onclick="playSong()" style="position: absolute; top: 50%; left: 50%; z-index: 99; font-size: 1.5em">
+      Play
+    </button>
+
+    <a-scene>
       <a-assets>
         <img id="floor" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous" />
         <img id="skymap" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous" />
@@ -26,7 +37,7 @@
           scale-y-color="from: 10 20 50; to: 210, 220, 250; maxScale: 15"
         ></a-mixin>
 
-        <audio id="song" autoplay loop src="../songs/paris.mp3"></audio>
+        <audio id="song" loop src="../songs/paris.mp3"></audio>
       </a-assets>
 
       <!--Audio Analyser / Waveform-->
