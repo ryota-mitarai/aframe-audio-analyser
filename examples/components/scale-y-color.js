@@ -9,16 +9,16 @@ AFRAME.registerComponent('scale-y-color', {
   },
 
   tick: function (time) {
-    var data = this.data;
-    var el = this.el;
+    const data = this.data;
+    const el = this.el;
 
     if (time - this.time < 50) {
       return;
     }
     this.time = time;
 
-    var scaleY = el.getAttribute('scale').y;
-    var percentage = scaleY / data.maxScale;
+    const scaleY = el.getAttribute('scale').y;
+    const percentage = scaleY / data.maxScale;
     el.setAttribute(
       'material',
       'color',
@@ -33,7 +33,7 @@ AFRAME.registerComponent('scale-y-color', {
 });
 
 function rgbToHex(r, g, b) {
-  var bin = (r << 16) | (g << 8) | b;
+  const bin = (r << 16) | (g << 8) | b;
   return (function (h) {
     return new Array(7 - h.length).join('0') + h;
   })(bin.toString(16).toUpperCase());

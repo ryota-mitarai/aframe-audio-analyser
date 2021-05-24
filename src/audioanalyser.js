@@ -52,8 +52,8 @@ AFRAME.registerComponent('audioanalyser', {
   },
 
   update: function (oldData) {
-    var analyser = this.analyser;
-    var data = this.data;
+    const analyser = this.analyser;
+    const data = this.data;
 
     // Update analyser stuff.
     if (oldData.fftSize !== data.fftSize || oldData.smoothingTimeConstant !== data.smoothingTimeConstant) {
@@ -72,9 +72,8 @@ AFRAME.registerComponent('audioanalyser', {
   /**
    * Update spectrum on each frame.
    */
-  tick: function (t, dt) {
-    var data = this.data;
-    var volume;
+  tick: function () {
+    const data = this.data;
 
     if (!data.enabled) {
       return;
@@ -102,7 +101,7 @@ AFRAME.registerComponent('audioanalyser', {
     // Beat detection.
     if (data.enableBeatDetection) {
       //frequencies here are on a scale of 0 - 23600hz
-      let val = this.beatInRange(1, 350, this.beat_low, this.beat_low_max, 'audioanalyser-beat-low');
+      var val = this.beatInRange(1, 350, this.beat_low, this.beat_low_max, 'audioanalyser-beat-low');
       this.beat_low = val[0];
       this.beat_low_max = val[1];
       val = this.beatInRange(500, 2000, this.beat_mid, this.beat_mid_max, 'audioanalyser-beat-mid');
@@ -135,13 +134,11 @@ AFRAME.registerComponent('audioanalyser', {
   },
 
   initContext: function () {
-    var data = this.data;
-    var analyser;
-    var gainNode;
+    const data = this.data;
 
     this.context = new (window.webkitAudioContext || window.AudioContext)();
-    analyser = this.analyser = this.context.createAnalyser();
-    gainNode = this.gainNode = this.context.createGain();
+    const analyser = (this.analyser = this.context.createAnalyser());
+    const gainNode = (this.gainNode = this.context.createGain());
     gainNode.connect(analyser);
     analyser.connect(this.context.destination);
     analyser.fftSize = data.fftSize;
@@ -151,8 +148,7 @@ AFRAME.registerComponent('audioanalyser', {
   },
 
   refreshSource: function () {
-    var analyser = this.analyser;
-    var data = this.data;
+    const data = this.data;
 
     if (data.buffer && data.src.constructor === String) {
       this.getBufferSource().then((source) => {
@@ -214,11 +210,10 @@ AFRAME.registerComponent('audioanalyser', {
   },
 
   getBufferSource: function () {
-    var data = this.data;
+    const data = this.data;
     return this.fetchAudioBuffer(data.src)
       .then(() => {
-        var source;
-        source = this.context.createBufferSource();
+        const source = this.context.createBufferSource();
         source.buffer = audioBufferCache[data.src];
         this.el.emit('audioanalyserbuffersource', source, false);
         return source;

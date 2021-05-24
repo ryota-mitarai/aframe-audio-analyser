@@ -5,8 +5,8 @@ AFRAME.registerComponent('color-on-beat', {
   },
 
   init: function () {
-    var analyserEl = this.data.analyserEl || this.el;
-    var el = this.el;
+    const analyserEl = this.data.analyserEl || this.el;
+    const el = this.el;
 
     analyserEl.addEventListener(`audioanalyser-beat-${this.data.beat}`, function () {
       el.setAttribute(

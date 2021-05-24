@@ -8,12 +8,12 @@ AFRAME.registerComponent('ring-on-beat', {
   },
 
   init: function () {
-    var analyserEl = this.data.analyserEl || this.el;
-    var el = this.el;
-    var rings = (this.rings = []);
+    const analyserEl = this.data.analyserEl || this.el;
+    const el = this.el;
+    const rings = (this.rings = []);
 
     analyserEl.addEventListener(`audioanalyser-beat-${this.data.beat}`, function () {
-      var ringEl = document.createElement('a-ring');
+      const ringEl = document.createElement('a-ring');
       ringEl.setAttribute('material', 'opacity', '0.6');
       ringEl.setAttribute('position', '0 0.1 0');
       ringEl.setAttribute('rotation', '-90 0 0');
@@ -34,7 +34,7 @@ AFRAME.registerComponent('ring-on-beat', {
    */
   tick: function () {
     this.rings.forEach(function (ringEl) {
-      var scale = ringEl.getAttribute('scale');
+      const scale = ringEl.getAttribute('scale');
       ringEl.setAttribute('scale', {
         x: scale.x * 1.06 + 0.05,
         y: scale.y * 1.06 + 0.05,

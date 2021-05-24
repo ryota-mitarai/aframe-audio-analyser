@@ -9,18 +9,15 @@ AFRAME.registerComponent('audioanalyser-levels-scale', {
   },
 
   tick: function () {
-    var analyserEl;
-    var children;
-    var data = this.data;
-    var levels;
+    const data = this.data;
 
-    analyserEl = data.analyserEl || this.el;
-    levels = analyserEl.components.audioanalyser.levels;
+    const analyserEl = data.analyserEl || this.el;
+    const levels = analyserEl.components.audioanalyser.levels;
     if (!levels) {
       return;
     }
 
-    children = this.el.children;
+    const children = this.el.children;
     for (var i = 0; i < children.length; i++) {
       children[i].setAttribute('scale', {
         x: 1,

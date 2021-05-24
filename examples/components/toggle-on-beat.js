@@ -9,9 +9,9 @@ AFRAME.registerComponent('toggle-on-beat', {
   },
 
   init: function () {
-    var analyserEl = this.data.analyserEl || this.el;
-    var el = this.el;
-    var data = this.data;
+    const analyserEl = this.data.analyserEl || this.el;
+    const el = this.el;
+    const data = this.data;
 
     data.toggleState = true;
 

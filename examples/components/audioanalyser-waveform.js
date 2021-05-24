@@ -1,7 +1,7 @@
-var perlin = new ImprovedNoise();
+const perlin = new ImprovedNoise();
 
-var RINGCOUNT = 160;
-var SEGMENTS = 512;
+const RINGCOUNT = 160;
+const SEGMENTS = 512;
 
 /**
  * Generate rings (THREE.Line) and transform them using audioanalyser waveform data.
@@ -25,26 +25,21 @@ AFRAME.registerComponent('audioanalyser-waveform', {
   },
 
   update: function () {
-    var data = this.data;
-    var el = this.el;
-    var i;
-    var lineMesh;
-    var loopShape;
-    var material;
-    var scale;
+    const data = this.data;
+    const el = this.el;
 
     // Create ring geometries.
-    loopShape = new THREE.Shape();
+    const loopShape = new THREE.Shape();
     loopShape.absarc(0, 0, data.radius, 0, Math.PI * 2, false);
-    var pts = loopShape.getPoints(SEGMENTS / 2);
+    const pts = loopShape.getPoints(SEGMENTS / 2);
     var positions = [];
     for (var i = 0, l = pts.length; i < l; i++) {
-      var point = pts[i];
+      const point = pts[i];
       positions.push(point.x || 0);
       positions.push(point.y || 0);
       positions.push(point.z || 0);
     }
-    var geometry = new THREE.BufferGeometry();
+    const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
 
     this.geometry = geometry;
@@ -54,9 +49,9 @@ AFRAME.registerComponent('audioanalyser-waveform', {
     el.setObject3D('waveformContainer', new THREE.Object3D());
 
     // Create rings.
-    scale = 1;
-    for (i = 0; i < RINGCOUNT; i++) {
-      material = new THREE.LineBasicMaterial({
+    var scale = 1;
+    for (let i = 0; i < RINGCOUNT; i++) {
+      const material = new THREE.LineBasicMaterial({
         color: 0xffffff,
         linewidth: 1,
         opacity: 0.7,
@@ -64,7 +59,7 @@ AFRAME.registerComponent('audioanalyser-waveform', {
         depthTest: true,
         transparent: true,
       });
-      lineMesh = new THREE.Line(this.geometry, material);
+      const lineMesh = new THREE.Line(this.geometry, material);
 
       scale *= 1.05;
       lineMesh.scale.x = scale;
@@ -78,22 +73,20 @@ AFRAME.registerComponent('audioanalyser-waveform', {
   },
 
   tick: function () {
-    var VOL_SENS;
-    var analyserComponent;
-    var colors = this.colors;
-    var data = this.data;
-    var el = this.el;
-    var levels = this.levels;
-    var rings = this.rings;
+    const colors = this.colors;
+    const data = this.data;
+    const el = this.el;
+    const levels = this.levels;
+    const rings = this.rings;
 
-    analyserComponent = el.components.audioanalyser;
+    const analyserComponent = el.components.audioanalyser;
     if (!analyserComponent.analyser) {
       return;
     }
 
     if (!this.geometry) return;
 
-    VOL_SENS = 2;
+    const VOL_SENS = 2;
     levels.push((analyserComponent.volume / 256) * VOL_SENS); // 256 is max level.
     levels.shift(1);
 
@@ -103,7 +96,7 @@ AFRAME.registerComponent('audioanalyser-waveform', {
     colors.shift(1);
 
     // Write current waveform into all rings.
-    var geometryPositions = this.geometry.getAttribute('position').array;
+    const geometryPositions = this.geometry.getAttribute('position').array;
     geometryPositions.forEach(function (vertex, index) {
       vertex.z = Math.min(analyserComponent.waveform[index] * data.multiplier, data.maxHeight);
     });
@@ -113,8 +106,7 @@ AFRAME.registerComponent('audioanalyser-waveform', {
     //this.geometry.verticesNeedUpdate = true;
 
     rings.forEach(function transformRing(ring, index) {
-      var normLevel;
-      normLevel = levels[RINGCOUNT - index - 1] + 0.01; // Avoid scaling by 0.
+      const normLevel = levels[RINGCOUNT - index - 1] + 0.01; // Avoid scaling by 0.
       ring.material.color.setHSL(colors[index], 1, normLevel);
       ring.material.linewidth = normLevel * 3;
       ring.material.opacity = normLevel;
