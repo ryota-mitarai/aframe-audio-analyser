@@ -1,6 +1,6 @@
 {
   "name": "aframe-audio-analyser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/ryota-mitarai/aframe-audio-analyser",
   "description": "An aframe component for adding audio visualizations.",
   "repository": "https://github.com/ryota-mitarai/aframe-audio-analyser.git",
