@@ -6,11 +6,9 @@
 
 An [aframe](https://github.com/aframevr/aframe) component for adding audio visualizations, using Web Audio. This is an updated version of [aframe-audioanalyser-component](https://www.npmjs.com/package/aframe-audioanalyser-component), with various improvements.
 
-Check out the [live demo](https://codesandbox.io/s/aframe-audio-analyser-example-l0i7v).
-
 ![Example gif](https://github.com/ryota-mitarai/aframe-audio-analyser/blob/master/examples/levels/preview.gif)
 
-This component mostly provides processed Web Audio data (beat detection, levels, volume, waveform). How that is visualized is up to you (by writing components that use this data to have a visual effect). Components will generally implement the tick handler and read the analyser data. See the examples for some example visualization components.
+This component mostly provides processed Web Audio data (beat detection, levels, volume, waveform). How that is visualized is up to you (by writing components that use this data to have a visual effect). Components will generally implement the tick handler and read the analyser data. See the [examples](https://github.com/ryota-mitarai/aframe-audio-analyser/tree/master/examples) for some example visualization components.
 
 ## Properties
 
@@ -18,8 +16,8 @@ This component mostly provides processed Web Audio data (beat detection, levels,
 | --------------------- | -------------------------------------------------------------------- | ------------- |
 | src                   | Selector to an audio element or path to audio file.                  | ''            |
 |                       |                                                                      |               |
-| beatStartCutoff       | Parameter for beat detection                                         | 0.8           |
-| beatEndCutoff         | Parameter for beat detection                                         | 0.75          |
+| beatStartCutoff       | Beat detection start threshold.                                      | 0.8           |
+| beatEndCutoff         | Beat detection end threshold.                                        | 0.75          |
 | cache                 | Whether or not to cache audio buffers.                               | false         |
 | enableBeatDetection   | Whether or not to detect beats. Disable if not using.                | true          |
 | enableLevels          | Whether or not to store frequency data. Disable if not using.        | true          |
@@ -58,7 +56,7 @@ el.components.audioanalyser.analyser;
 ```html
 <head>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-audio-analyser@1.0.0/dist/aframe-audio-analyser.umd.js"></script>
+  <script src="https://unpkg.com/aframe-audio-analyser@^1.0.0/dist/aframe-audio-analyser.umd.js"></script>
 </head>
 <body>
   <a-scene>
